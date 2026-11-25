@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111820">
+  <meta name="description" content="Router CNC Mecdrill: especificações técnicas dos modelos 1520, 3020 e 5020 para corte, gravação e usinagem de MDF, madeira e acrílico. Londrina/PR.">
+  <title>Router CNC | Mecdrill CNC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --ink: #101820;
+      --ink-soft: #17232d;
+      --gold: #f5bd28;
+      --gold-light: #ffd76a;
+      --paper: #f4f6f7;
+      --white: #fff;
+      --muted: #68747d;
+      --line: #e4e8eb;
+      --radius: 18px;
+      --shadow: 0 18px 50px rgba(16, 24, 32, .10);
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; font-family: "DM Sans", sans-serif; color: var(--ink); background: var(--white); line-height: 1.65; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button { font: inherit; cursor: pointer; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+
+    /* Header (igual ao index) */
+    .site-header { position: sticky; top: 0; z-index: 100; background: rgba(16,24,32,.96); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.08); }
+    .header-inner { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; text-decoration: none; flex: 0 0 auto; }
+    .brand img { width: 176px; max-height: 58px; object-fit: contain; }
+    .main-nav { display: flex; align-items: center; gap: 8px; }
+    .main-nav a { color: #d8dee2; text-decoration: none; font-size: .92rem; font-weight: 600; padding: 11px 14px; border-radius: 9px; transition: .2s ease; }
+    .main-nav a:hover, .main-nav a.active { color: var(--gold); background: rgba(245,189,40,.09); }
+    .nav-cta { background: var(--gold) !important; color: var(--ink) !important; margin-left: 8px; }
+    .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.18); border-radius: 10px; color: white; background: transparent; }
+
+    /* Hero */
+    .hero { position: relative; isolation: isolate; overflow: hidden; color: white; background: var(--ink); padding: 112px 0 90px; }
+    .hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background: linear-gradient(105deg, rgba(10,16,22,.97) 10%, rgba(10,16,22,.82) 58%, rgba(10,16,22,.58)), url("imagens/maquina2.png") center/cover no-repeat; }
+    .hero::after { content: ""; position: absolute; z-index: -1; width: 520px; height: 520px; right: -180px; top: -230px; border: 1px solid rgba(245,189,40,.22); border-radius: 50%; box-shadow: 0 0 0 55px rgba(245,189,40,.035), 0 0 0 110px rgba(245,189,40,.025); }
+    .hero-content { max-width: 780px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--gold); text-transform: uppercase; letter-spacing: .16em; font-size: .76rem; font-weight: 800; }
+    .eyebrow::before { content: ""; width: 28px; height: 2px; background: currentColor; }
+    h1, h2, h3 { font-family: Manrope, sans-serif; line-height: 1.15; }
+    .hero h1 { max-width: 760px; margin: 20px 0; font-size: clamp(2.4rem, 5.5vw, 3.8rem); letter-spacing: -.045em; font-weight: 800; }
+    .hero h1 span { color: var(--gold); }
+    .hero p { max-width: 620px; color: #c7d0d6; font-size: clamp(1rem, 2vw, 1.14rem); margin: 0 0 32px; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 13px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 50px; padding: 13px 21px; border: 1px solid transparent; border-radius: 9px; text-decoration: none; font-weight: 700; transition: transform .2s, background .2s, border-color .2s; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary { background: var(--gold); color: var(--ink); }
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-outline { color: white; border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.04); }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* Trust strip */
+    .trust-strip { background: var(--gold); color: var(--ink); }
+    .trust-inner { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; padding: 19px 0; }
+    .trust-item { display: flex; justify-content: center; align-items: center; gap: 12px; font-weight: 700; font-size: .93rem; }
+    .trust-item i { font-size: 1.15rem; }
+
+    /* Sections */
+    .section { padding: 80px 0; }
+    .section-muted { background: var(--paper); }
+    .section-heading { max-width: 690px; margin: 0 auto 42px; text-align: center; }
+    .section-heading .eyebrow { justify-content: center; }
+    .section-heading h2 { margin: 13px 0 12px; font-size: clamp(1.9rem, 3.8vw, 2.7rem); letter-spacing: -.04em; }
+    .section-heading p { color: var(--muted); margin: 0; font-size: 1.04rem; }
+
+    /* Tabs */
+    .tabs { display: flex; justify-content: center; gap: 12px; margin-bottom: 36px; flex-wrap: wrap; }
+    .tab { padding: 13px 26px; background: var(--ink); color: #d8dee2; border: none; border-radius: 9px; font-weight: 700; font-size: .95rem; transition: .2s; }
+    .tab:hover, .tab.active { background: var(--gold); color: var(--ink); }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn .4s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Sub-tabs */
+    .sub-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 32px; flex-wrap: wrap; }
+    .sub-tab { padding: 11px 24px; background: white; border: 1px solid var(--line); border-radius: 9px; font-weight: 700; color: var(--ink); transition: .2s; }
+    .sub-tab:hover { border-color: var(--gold); }
+    .sub-tab.active { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+
+    .sub-tab-content { display: none; }
+    .sub-tab-content.active { display: block; animation: fadeIn .35s ease; }
+
+    .model-title { text-align: center; font-size: 1.6rem; margin: 0 0 24px; color: var(--ink); }
+
+    /* Foto do modelo */
+    .modelo-foto-box { max-width: 480px; margin: 0 auto 32px; background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: 0 8px 28px rgba(16,24,32,.06); }
+    .modelo-foto-box img { width: 100%; max-height: 320px; object-fit: contain; border-radius: 10px; }
+
+    /* Specs cards */
+    .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 28px; }
+    .spec-card { background: white; border: 1px solid var(--line); border-radius: 14px; padding: 22px 18px; text-align: center; box-shadow: 0 6px 20px rgba(16,24,32,.05); transition: transform .25s; }
+    .spec-card:hover { transform: translateY(-4px); }
+    .spec-card h3 { margin: 0 0 8px; font-size: .92rem; color: var(--muted); font-weight: 600; }
+    .spec-card p { margin: 0; font-size: 1.2rem; font-weight: 800; color: var(--ink); font-family: Manrope, sans-serif; }
+
+    /* Tech list */
+    .tech-list { background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 30px; box-shadow: 0 8px 28px rgba(16,24,32,.05); }
+    .tech-list h4 { margin: 0 0 18px; font-size: 1.15rem; font-family: Manrope, sans-serif; }
+    .tech-list ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 36px; }
+    .tech-list li { display: flex; justify-content: space-between; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: .95rem; }
+    .tech-list .tech-label { color: var(--muted); }
+    .tech-list .tech-value { font-weight: 700; color: var(--ink); text-align: right; }
+
+    .model-cta { text-align: center; margin-top: 28px; }
+
+    /* Serviços */
+    .servicos-list { list-style: none; max-width: 520px; margin: 0 auto; padding: 0; }
+    .servicos-list li { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 1.08rem; color: #3f4b54; }
+    .servicos-list li:last-child { border-bottom: 0; }
+    .servicos-list i { color: #b58400; font-size: 1.1rem; }
+
+    /* Closing CTA */
+    .closing-cta { padding: 62px 0; color: white; background: linear-gradient(110deg, #111b24, #24313b); }
+    .closing-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .closing-inner h2 { margin: 0 0 8px; font-size: clamp(1.6rem, 3vw, 2.2rem); }
+    .closing-inner p { color: #c3cdd3; margin: 0; }
+
+    /* Footer (igual ao index) */
+    .site-footer { color: #c3cdd3; background: #0b1116; padding: 58px 0 22px; }
+    .footer-top { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 40px; padding-bottom: 38px; }
+    .footer-brand { color: white; font: 800 1.7rem Manrope, sans-serif; letter-spacing: -.04em; margin-bottom: 13px; }
+    .footer-brand span { color: var(--gold); }
+    .footer-about { max-width: 340px; color: #9eabb3; margin: 0; }
+    .footer-col h3 { color: white; font-size: 1rem; margin: 5px 0 16px; }
+    .footer-links { display: grid; gap: 10px; }
+    .footer-links a { width: fit-content; color: #aeb9c0; text-decoration: none; transition: color .2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .social-links { display: flex; gap: 10px; }
+    .social-links a { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid rgba(255,255,255,.13); border-radius: 10px; color: white; text-decoration: none; transition: .2s; }
+    .social-links a:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+    .copyright { padding-top: 20px; border-top: 1px solid rgba(255,255,255,.1); color: #7f8b93; text-align: center; font-size: .88rem; }
+
+    .whatsapp-float { position: fixed; z-index: 90; right: 22px; bottom: 22px; }
+    .whatsapp-float a { display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%; background: #20c66b; color: white; font-size: 1.8rem; text-decoration: none; box-shadow: 0 8px 24px rgba(0,0,0,.22); transition: transform .2s; }
+    .whatsapp-float a:hover { transform: translateY(-4px) scale(1.04); }
+
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+    @media (max-width: 850px) {
+      .menu-toggle { display: inline-grid; place-items: center; }
+      .main-nav { display: none; position: absolute; top: 82px; left: 0; right: 0; padding: 14px 20px 20px; background: var(--ink); border-top: 1px solid rgba(255,255,255,.1); flex-direction: column; align-items: stretch; gap: 4px; }
+      .main-nav.open { display: flex; }
+      .main-nav a { padding: 13px 14px; }
+      .nav-cta { margin: 6px 0 0; text-align: center; }
+      .hero { padding: 88px 0 72px; }
+      .trust-inner { grid-template-columns: 1fr; gap: 12px; }
+      .trust-item { justify-content: flex-start; }
+      .tech-list ul { grid-template-columns: 1fr; }
+      .tech-list li { flex-direction: column; gap: 2px; }
+      .tech-list .tech-value { text-align: left; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .footer-about-col { grid-column: 1 / -1; }
+      .closing-inner { flex-direction: column; align-items: stretch; }
+    }
+    @media (max-width: 620px) {
+      .container { width: min(var(--max), calc(100% - 30px)); }
+      .header-inner { min-height: 72px; }
+      .brand img { width: 145px; }
+      .main-nav { top: 72px; }
+      .hero { padding: 76px 0 64px; }
+      .button-row { flex-direction: column; }
+      .btn { width: 100%; }
+      .specs-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .whatsapp-float { right: 15px; bottom: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Mecdrill CNC - Página inicial">
+        <img src="imagens/logo.png" alt="Mecdrill CNC">
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+      <nav class="main-nav" id="mainNav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="servico-personalizado.html">Serviços Personalizados</a>
+        <a class="active" href="router-cnc.html" aria-current="page">Router CNC</a>
+        <a href="laser-co2.html">Laser CO₂</a>
+        <a class="nav-cta" href="https://wa.me/554330174104" target="_blank" rel="noopener noreferrer">Solicitar orçamento <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-content">
+        <span class="eyebrow">Tecnologia • Precisão • Resultado</span>
+        <h1>Router <span>CNC</span></h1>
+        <p>Soluções completas para corte, gravação e usinagem de materiais com precisão milimétrica.</p>
+        <div class="button-row">
+          <a class="btn btn-primary" href="#especificacoes">Ver especificações <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+          <a class="btn btn-outline" href="https://wa.me/554330174104?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Router%20CNC." target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i> Falar no WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-strip">
+      <div class="container trust-inner">
+        <div class="trust-item"><i class="fas fa-crosshairs" aria-hidden="true"></i> Precisão milimétrica</div>
+        <div class="trust-item"><i class="fas fa-gears" aria-hidden="true"></i> Modelos 1520 · 3020 · 5020</div>
+        <div class="trust-item"><i class="fas fa-handshake" aria-hidden="true"></i> Soluções sob medida</div>
+      </div>
+    </div>
+
+    <!-- Conteúdo -->
+   <section class="section section-muted" id="detalhes">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Detalhes do produto</span>
+          <h2>Especificações e aplicações</h2>
+          <p>Conheça todas as especificações técnicas e os serviços realizados com o Router CNC.</p>
+        </div>
+
+        <!-- Abas principais -->
+        <div class="tabs">
+          <button type="button" class="tab active" data-tab="especificacoes">Especificações Técnicas</button>
+          <button type="button" class="tab" data-tab="servicos">Serviços Feitos</button>
+        </div>
+
+        <!-- Aba Especificações -->
+        <div class="tab-content active" id="especificacoes">
+          <div class="sub-tabs">
+            <button type="button" class="sub-tab active" data-sub-tab="1520">1520</button>
+            <button type="button" class="sub-tab" data-sub-tab="3020">3020</button>
+            <button type="button" class="sub-tab" data-sub-tab="5020">5020</button>
+          </div>
+
+          <!-- 1520 -->
+          <div class="sub-tab-content active" id="1520">
+            <h3 class="model-title">Modelo 1520</h3>
+            <div class="modelo-foto-box">
+              <img src="imagens/maquina3.png" alt="Router CNC Mecdrill modelo 1520">
+            </div>
+            <div class="specs-grid">
+              <div class="spec-card"><h3>Área de Trabalho</h3><p>1500 × 2000 mm</p></div>
+              <div class="spec-card"><h3>Potência do Spindle</h3><p>2.2 kW</p></div>
+              <div class="spec-card"><h3>Velocidade Máxima</h3><p>18.000 RPM</p></div>
+              <div class="spec-card"><h3>Precisão de Corte</h3><p>±0.03 mm</p></div>
+            </div>
+            <div class="tech-list">
+              <h4>Dados técnicos</h4>
+              <ul>
+                <li><span class="tech-label">Guias lineares</span><span class="tech-value">20mm retificadas (X, Y e Z)</span></li>
+                <li><span class="tech-label">Tração</span><span class="tech-value">Calheira helicoidal, módulo 1.5mm</span></li>
+                <li><span class="tech-label">Motores</span><span class="tech-value">Passo com encoder (Easy Servo), 120 kgf.cm</span></li>
+                <li><span class="tech-label">Velocidade de deslocamento</span><span class="tech-value">14.000 mm/min</span></li>
+                <li><span class="tech-label">Altura útil (Z)</span><span class="tech-value">Até 150mm</span></li>
+                <li><span class="tech-label">Estrutura</span><span class="tech-value">Monobloco em aço, chapa 4.75mm</span></li>
+                <li><span class="tech-label">Ponte (eixo X)</span><span class="tech-value">Reforçada, chapa de aço 16mm</span></li>
+                <li><span class="tech-label">Fim de curso</span><span class="tech-value">Sensores de proximidade + batentes</span></li>
+                <li><span class="tech-label">Fixação da ferramenta</span><span class="tech-value">Porta-pinça ER-32 (até Ø19mm)</span></li>
+                <li><span class="tech-label">Acompanha</span><span class="tech-value">Computador, totem, kit lubrificação e 3 pinças</span></li>
+                <li><span class="tech-label">Opcional</span><span class="tech-value">Kit mesa de vácuo (motor 8cv)</span></li>
+                <li><span class="tech-label">Peso</span><span class="tech-value">800 Kg</span></li>
+                <li><span class="tech-label">Garantia</span><span class="tech-value">1 ano contra defeitos de fabricação</span></li>
+              </ul>
+            </div>
+            <div class="model-cta">
+              <a class="btn btn-primary" href="https://wa.me/554330174104?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Router%20CNC%201520." target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i> Falar sobre a 1520
+              </a>
+            </div>
+          </div>
+
+          <!-- 3020 -->
+          <div class="sub-tab-content" id="3020">
+            <h3 class="model-title">Modelo 3020</h3>
+            <div class="modelo-foto-box">
+              <img src="imagens/maquina2.png" alt="Router CNC Mecdrill modelo 3020">
+            </div>
+            <div class="specs-grid">
+              <div class="spec-card"><h3>Área de Trabalho</h3><p>3000 × 2000 mm</p></div>
+              <div class="spec-card"><h3>Potência do Spindle</h3><p>3.5 kW</p></div>
+              <div class="spec-card"><h3>Velocidade Máxima</h3><p>24.000 RPM</p></div>
+              <div class="spec-card"><h3>Precisão de Corte</h3><p>±0.08 mm</p></div>
+            </div>
+            <div class="tech-list">
+              <h4>Dados técnicos</h4>
+              <ul>
+                <li><span class="tech-label">Guias lineares</span><span class="tech-value">20mm retificadas (X, Y e Z)</span></li>
+                <li><span class="tech-label">Tração</span><span class="tech-value">Cremalheira helicoidal, módulo 1.5mm</span></li>
+                <li><span class="tech-label">Motores</span><span class="tech-value">Passo com encoder (Easy Servo), 120 kgf.cm</span></li>
+                <li><span class="tech-label">Velocidade de deslocamento</span><span class="tech-value">14.000 mm/min</span></li>
+                <li><span class="tech-label">Altura útil (Z)</span><span class="tech-value">Até 150mm</span></li>
+                <li><span class="tech-label">Estrutura</span><span class="tech-value">Monobloco em aço, chapa 4.75mm</span></li>
+                <li><span class="tech-label">Ponte (eixo X)</span><span class="tech-value">Reforçada, chapa de aço 16mm</span></li>
+                <li><span class="tech-label">Fim de curso</span><span class="tech-value">Sensores de proximidade + batentes</span></li>
+                <li><span class="tech-label">Fixação da ferramenta</span><span class="tech-value">Porta-pinça ER-32 (até Ø19mm)</span></li>
+                <li><span class="tech-label">Acompanha</span><span class="tech-value">Computador, totem, kit lubrificação e 3 pinças</span></li>
+                <li><span class="tech-label">Opcional</span><span class="tech-value">Kit mesa de vácuo (motor 8cv)</span></li>
+                <li><span class="tech-label">Peso</span><span class="tech-value">1.200 Kg</span></li>
+                <li><span class="tech-label">Garantia</span><span class="tech-value">1 ano contra defeitos de fabricação</span></li>
+              </ul>
+            </div>
+            <div class="model-cta">
+              <a class="btn btn-primary" href="https://wa.me/554330174104?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Router%20CNC%203020." target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i> Falar sobre a 3020
+              </a>
+            </div>
+          </div>
+
+          <!-- 5020 -->
+          <div class="sub-tab-content" id="5020">
+            <h3 class="model-title">Modelo 5020</h3>
+            <div class="modelo-foto-box">
+              <img src="imagens/maquina5.png" alt="Router CNC Mecdrill modelo 5020">
+            </div>
+            <div class="specs-grid">
+              <div class="spec-card"><h3>Área de Trabalho</h3><p>5000 × 2000 mm</p></div>
+              <div class="spec-card"><h3>Potência do Spindle</h3><p>5.5 kW</p></div>
+              <div class="spec-card"><h3>Velocidade Máxima</h3><p>30.000 RPM</p></div>
+              <div class="spec-card"><h3>Precisão de Corte</h3><p>±0.1 mm</p></div>
+            </div>
+            <div class="tech-list">
+              <h4>Dados técnicos</h4>
+              <ul>
+                <li><span class="tech-label">Guias lineares</span><span class="tech-value">20mm retificadas (X, Y e Z)</span></li>
+                <li><span class="tech-label">Tração</span><span class="tech-value">Cremalheira helicoidal, módulo 1.5mm</span></li>
+                <li><span class="tech-label">Motores</span><span class="tech-value">Passo com encoder (Easy Servo), 120 kgf.cm</span></li>
+                <li><span class="tech-label">Velocidade de deslocamento</span><span class="tech-value">14.000 mm/min</span></li>
+                <li><span class="tech-label">Altura útil (Z)</span><span class="tech-value">Até 150mm</span></li>
+                <li><span class="tech-label">Estrutura</span><span class="tech-value">Monobloco em aço, chapa 4.75mm</span></li>
+                <li><span class="tech-label">Ponte (eixo X)</span><span class="tech-value">Reforçada, chapa de aço 16mm</span></li>
+                <li><span class="tech-label">Fim de curso</span><span class="tech-value">Sensores de proximidade + batentes</span></li>
+                <li><span class="tech-label">Fixação da ferramenta</span><span class="tech-value">Porta-pinça ER-32 (até Ø19mm)</span></li>
+                <li><span class="tech-label">Acompanha</span><span class="tech-value">Computador, totem, kit lubrificação e 3 pinças</span></li>
+                <li><span class="tech-label">Opcional</span><span class="tech-value">Kit mesa de vácuo (motor 8cv)</span></li>
+                <li><span class="tech-label">Peso</span><span class="tech-value">1.600 Kg</span></li>
+                <li><span class="tech-label">Garantia</span><span class="tech-value">1 ano contra defeitos de fabricação</span></li>
+              </ul>
+            </div>
+            <div class="model-cta">
+              <a class="btn btn-primary" href="https://wa.me/554330174104?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20Router%20CNC%205020." target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i> Falar sobre a 5020
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aba Serviços -->
+        <div class="tab-content" id="servicos">
+          <h3 style="text-align:center; margin:0 0 28px; font-size:1.5rem;">Serviços feitos com Router CNC</h3>
+          <ul class="servicos-list">
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Corte de MDF e MDP</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Gravação 3D em madeira</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Usinagem de peças complexas</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Corte de acrílico e plásticos</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Produção de protótipos</li>
+            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Estampa e ornamentação</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA final -->
+    <section class="closing-cta">
+      <div class="container closing-inner">
+        <div>
+          <h2>Quer um orçamento para Router CNC?</h2>
+          <p>Fale com a Mecdrill e encontre o modelo ideal para a sua produção.</p>
+        </div>
+        <a class="btn btn-primary" href="https://wa.me/554330174104?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Router%20CNC." target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i> Solicitar orçamento
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-about-col">
+          <div class="footer-brand">Mecdrill<span>CNC</span></div>
+          <p class="footer-about">Tecnologia de precisão em Router CNC, corte a laser CO₂ e serviços personalizados para transformar ideias em soluções.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Navegação</h3>
+          <div class="footer-links">
+            <a href="index.html">Início</a>
+            <a href="servico-personalizado.html">Serviços Personalizados</a>
+            <a href="router-cnc.html">Router CNC</a>
+            <a href="laser-co2.html">Laser CO₂</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Acompanhe a Mecdrill</h3>
+          <div class="social-links">
+            <a href="https://web.facebook.com/profile.php?id=61559308006483" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/mecdrill.cnc/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://www.youtube.com/@mecdrillcnc" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+            <a href="https://wa.me/554330174104" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">© 2026 Mecdrill CNC. Todos os direitos reservados.</div>
+    </div>
+  </footer>
+
+  <div class="whatsapp-float">
+    <a href="https://wa.me/554330174104" target="_blank" rel="noopener noreferrer" aria-label="Falar com a Mecdrill pelo WhatsApp">
+      <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Menu mobile
+      const menuButton = document.querySelector(".menu-toggle");
+      const nav = document.querySelector("#mainNav");
+      menuButton?.addEventListener("click", () => {
+        const isOpen = nav.classList.toggle("open");
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuButton.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
+        menuButton.innerHTML = `<i class="fas fa-${isOpen ? "xmark" : "bars"}" aria-hidden="true"></i>`;
+      });
+      nav?.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+        nav.classList.remove("open");
+        menuButton?.setAttribute("aria-expanded", "false");
+        if (menuButton) {
+          menuButton.setAttribute("aria-label", "Abrir menu");
+          menuButton.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
+        }
+      }));
+
+      // Abas principais
+      const tabs = document.querySelectorAll(".tab");
+      tabs.forEach(tab => {
+        tab.addEventListener("click", function() {
+          const tabId = this.getAttribute("data-tab");
+          const alvo = document.getElementById(tabId);
+          if (!alvo) return;
+          tabs.forEach(t => t.classList.remove("active"));
+          document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+          this.classList.add("active");
+          alvo.classList.add("active");
+        });
+      });
+
+      // Sub-abas
+      const subTabs = document.querySelectorAll(".sub-tab");
+      subTabs.forEach(subTab => {
+        subTab.addEventListener("click", function() {
+          const subTabId = this.getAttribute("data-sub-tab");
+          const alvo = document.getElementById(subTabId);
+          if (!alvo) return;
+          subTabs.forEach(t => t.classList.remove("active"));
+          document.querySelectorAll(".sub-tab-content").forEach(c => c.classList.remove("active"));
+          this.classList.add("active");
+          alvo.classList.add("active");
+        });
+      });
+    });
+  </script>
+</body>
+</html>
