@@ -327,8 +327,8 @@
                 </select>
               </div>
               <div class="form-group full">
-                <label for="router_imagem">Desenho ou imagem do trabalho</label>
-                <input type="file" id="router_imagem" name="arquivo" accept="image/*,.pdf,.dxf,.dwg">
+                <label for="router_imagem">Desenho ou imagem do trabalho *</label>
+                <input type="file" id="router_imagem" name="arquivo" accept="image/*,.pdf,.dxf,.dwg" required>
                 <small>Formatos aceitos: JPG, PNG, PDF, DXF e DWG (até 5 MB).</small>
               </div>
               <div class="form-group full">
@@ -403,8 +403,8 @@
                 </select>
               </div>
               <div class="form-group full">
-                <label for="laser_imagem">Desenho ou imagem do trabalho</label>
-                <input type="file" id="laser_imagem" name="arquivo" accept="image/*,.pdf,.dxf,.dwg">
+                <label for="laser_imagem">Desenho ou imagem do trabalho *</label>
+                <input type="file" id="laser_imagem" name="arquivo" accept="image/*,.pdf,.dxf,.dwg" required>
                 <small>Formatos aceitos: JPG, PNG, PDF, DXF e DWG (até 5 MB).</small>
               </div>
               <div class="form-group full">
@@ -561,6 +561,12 @@
 
       statusElement.className = 'status-msg';
       statusElement.textContent = '';
+
+      if (!fileInput || !fileInput.files || !fileInput.files[0]) {
+        statusElement.classList.add('error');
+        statusElement.textContent = 'Anexe o desenho (DXF, PDF ou imagem) para enviar o orçamento.';
+        return;
+      }
 
       if (fileInput && fileInput.files && fileInput.files[0]) {
         const file = fileInput.files[0];
